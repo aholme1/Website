@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Section</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        /* Global Styles */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            padding-top: 56px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #f8f9fa;
+        }
+
+        /* Section Common Styles */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .about-section img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        /* Main Projects Section */
+.projects-section {
+    padding: 4rem 0;
+    background-color: #f8f9fa;  /* bg-light */
+}
+
+.projects-section .card {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.projects-section .card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Additional Projects Section */
+.extra-projects {
+    padding: 4rem 0;
+    background-color: #2a323c;  /* Deep navy background */
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;  /* Reduced border radius for sharper corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background: #3a4754;  /* Rich slate gray */
+    border: 1px solid #4a5a6a;  /* Subtle lighter border */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background: #3f4d5a;  /* Slightly lighter on hover */
+}
+
+.project-card .static-title {
+    padding: 15px;
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #e1e7ef;  /* Soft blue-white text */
+    background: #2f3a45;  /* Darker than card, lighter than section */
+    border-bottom: 1px solid #4a5a6a;
+}
+
+/* Optional accent elements */
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #64b5f6, #81c784);  /* Subtle blue-green gradient accent */
+    opacity: 0.8;
+}
+
+.project-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 0;  /* Remove border radius for rectangular images */
+    transition: filter 0.3s ease;
+}
+
+.project-card:hover img {
+    filter: brightness(0.3);
+}
+
+.project-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.github-link {
+    opacity: 0;
+    background-color: white;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 3px;  /* Slightly reduced border radius for button */
+    text-decoration: none;
+    font-weight: bold;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.project-card:hover .github-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.github-link:hover {
+    transform: scale(1.05);
+}
+
+        /* Skills Section */
+        .skills-section {
+            padding: 4rem 0;
+        }
+
+        .image-container {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-grid {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-grid img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            padding: 0.5rem;
+        }
+
+        .image-grid .col-6 {
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+/* Contact Section */
+.contact-section {
+    padding: 50px 0;
+}
+
+.contact-info {
+    margin-bottom: 3rem; /* Increased spacing between contact info and social links */
+}
+
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin: 0 2rem; /* Additional base spacing between icons */
+}
+
+.social-links a:hover {
+    color: #ddd;
+    transform: translateY(-3px);
+}
+
+.social-icon {
+    width: 50px;
+    margin-bottom: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon:hover {
+    opacity: 0.7;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+    .navbar-collapse {
+        background-color: #343a40;
+    }
+    
+    .social-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .social-links a {
+        margin: 1rem 0; /* Vertical spacing for mobile view */
+    }
+    
+    .social-links .d-flex {
+        flex-direction: column;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Alex Holme's Portfolio</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Project Spotlight</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#extra-projects">Additional Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About</h2>
+            <img src="images/about/headshot.PNG" alt="About Me">
+            <p>Hello! I'm Alex, a driven engineer passionate about finding data driven solutions. I have over 4 years of experience as a systems engineer, specializing in platform migrations, testing and validation, and driving plant automation. I am an expert in exploring and leveraging customer data to speed up projects and deliver effective results.</p>
+            <p>I deliver cutting edge Batch and Route Control projects that unlock pharmaceutical plant automation capabilities. I utilize data to rapidly execute migrations and minimize manual work involved in testing and validating the final system. I believe in efficiency and customer oriented results. I'm always eager to take on new challenges and collaborate on exciting projects that push boundaries.</p>
+            <p>Outside of work I love staying active, I completed my first marathon in 2023 and am excited for more in the future! I love rock climbing and going on hikes with my dog.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section bg-light">
+        <div class="container">
+            <h2 class="section-title">Project Spotlight</h2>
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="images/projects/NY.png" class="card-img-top" alt="Data Exploration and Analysis">
+                        <div class="card-body">
+                            <h5 class="card-title">NYC Amenities Analysis</h5>
+                            <p class="card-text">An analysis of the effect key metrics like income and population play in the amount of amenities present to communities in NYC. Data is prepared and presented using Python (Pandas, Numpy, Scipy, matplotlib, and ipywidgets) as well as tableau.</p>
+                            <a href="images/reports/NYC Amenities Analysis.pdf" class="btn btn-primary" target="_blank">Report</a>
+                            <a href="https://github.com/aholme1/Portfolio/blob/main/NYC_ZipCodes.ipynb" class="btn btn-secondary" target="_blank">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="images/projects/Dashboard.PNG" class="card-img-top" alt="Tableau Dashboard">
+                        <div class="card-body">
+                            <h5 class="card-title">Wine Selection Guide</h5>
+                            <p class="card-text">Interactive dashboard created in Tableau to help you find your ideal wine! You can modify the price range, Select specific countries, and chose your favorite wine varieties.</p>
+                            <a href="https://public.tableau.com/app/profile/alex.holme/viz/WineSelection/Final" class="btn btn-primary" target="_blank">Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="images/projects/Machine_Learning.jpeg" class="card-img-top" alt="Machine Learning">
+                        <div class="card-body">
+                            <h5 class="card-title">Machine Learning: Video Engagement Prediction Model</h5>
+                            <p class="card-text">Evaluation and hyperparameter tuning of different machine learning algorithims tasked with predicting user engagement of educational videos. Conducted in Python with Pandas and ScikitLearn.</p>
+                            <a href="images/reports/User_engagement_report.pdf" class="btn btn-primary" target="_blank">Report</a>
+                            <a href="#" class="btn btn-secondary" target="_blank">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section bg-white">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="row">
+                <!-- Skill 1: Data Processing -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="image-container">
+                            <div class="image-grid">
+                                <div class="row no-gutters">
+                                    <div class="col-6"><img src="images/skills/Python.png" alt="Python"></div>
+                                    <div class="col-6"><img src="images/skills/NumPy.png" alt="Numpy"></div>
+                                    <div class="col-6"><img src="images/skills/pandas.png" alt="Pandas"></div>
+                                    <div class="col-6"><img src="images/skills/scipy.png" alt="Scipy"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Data Processing in Python</h5>
+                            <p class="card-text">Advanced data processing knowledge in Python. Experience with a number of data science libraries including Pandas, Numpy, and SciPy.</p>
+                            <a href="#" class="btn btn-outline-primary">Certifications</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 2: Data Visualization -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="image-container">
+                            <div class="image-grid">
+                                <div class="row no-gutters">
+                                    <div class="col-6"><img src="images/skills/Tableau_Logo.png" alt="Tableau"></div>
+                                    <div class="col-6"><img src="images/skills/matplotlib.png" alt="Matplotlib"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Data Visualization</h5>
+                            <p class="card-text">Experience generating informative and useful dashboards in Tableau and Python. Advanced python data visualization skills utilizing the Matplotlib and Seaborn Libraries.</p>
+                            <a href="#" class="btn btn-outline-primary">Certifications</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 3: Data Engineering -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="image-container">
+                            <div class="image-grid">
+                                <div class="row no-gutters">
+                                    <div class="col-6"><img src="images/skills/Mysql_logo.png" alt="Python"></div>
+                                    <div class="col-6"><img src="images/skills/comos.png" alt="Numpy"></div>
+                                    <div class="col-6"><img src="images/skills/phpMyAdmin.png" alt="Numpy"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Database Programming</h5>
+                            <p class="card-text">Experience creating and querying databases for process automation and data science activities. Experience with Siemens COMOS, MySQL, and phpMyAdmin</p>
+                            <a href="#" class="btn btn-outline-primary">Certifications</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill 4: Machine Learning -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="image-container">
+                            <div class="image-grid">
+                                <div class="row no-gutters">
+                                    <div class="col-6"><img src="images/skills/Scikit_learn_logo.png" alt="Python"></div>
+                                    <div class="col-6"><img src="images/skills/pytorch.png" alt="Numpy"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Machine Learning</h5>
+                            <p class="card-text">Strong understanding of machine learning algorithms. Experience utilizing the SciKitLearn and PyTorch libraries for model training, selection, and optimization</p>
+                            <a href="#" class="btn btn-outline-primary">Certifications</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extra Projects Section -->
+    <section id="extra-projects" class="about-section bg-light">
+        <div class="container">
+            <h2 class="section-title">Additional Projects</h2>
+            <div class="projects-grid">
+                 <!-- Project 1 -->
+                 <div class="project-card">
+                    <h3 class="static-title">Database Creation and Querying</h3>
+                    <img src="images/projects/database.png" alt="Project 1">
+                    <div class="project-info">
+                        <a href="https://github.com/yourusername/project2" class="github-link">View on GitHub</a>
+                    </div>
+                </div>               
+                
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <h3 class="static-title">Machine Learning NLP Project</h3>
+                    <img src="images/projects/NLP.png" alt="Project 3">
+                    <div class="project-info">
+                        <a href="#" class="github-link">Coming Soon</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <h3 class="static-title">Analyis of Age's Effect on Marathon Times</h3>
+                    <img src="images/projects/Marathon.jpg" alt="Project 3">
+                    <div class="project-info">
+                        <a href="https://github.com/yourusername/project2" class="github-link">View on GitHub</a>
+                    </div>
+                </div>
+                 <!-- Project 4 -->
+                 <div class="project-card">
+                    <h3 class="static-title">Animations in Python</h3>
+                    <img src="images/skills/random_distribution.gif" alt="Project 4">
+                    <div class="project-info">
+                        <a href="https://github.com/yourusername/project1" class="github-link">View on GitHub</a>
+                    </div>
+                </div>               
+                
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <h3 class="static-title">Weather Data Analysis</h3>
+                    <img src="images/projects/Temp_Plot.png" alt="Project 5">
+                    <div class="project-info">
+                        <a href="https://github.com/yourusername/project3" class="github-link">View on GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <h3 class="static-title">Backtracking Recursion: Sudoku Solver</h3>
+                    <img src="images/projects/sud.png" alt="Project 6">
+                    <div class="project-info">
+                        <a href="https://github.com/yourusername/project1" class="github-link">View on GitHub</a>
+                    </div>
+                </div> 
+
+            </div>
+        </div>
+    </section>
+
+<!-- Contact Section -->
+    <section id="contact" class="contact-section text-center text-white bg-dark">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <!-- Contact Info -->
+            <div class="contact-info mb-4">
+                <p><i class="fas fa-envelope"></i> aholme1@gmail.com</p>
+                <p><i class="fas fa-phone"></i> 847-707-4816</p>
+            </div>
+            <!-- Social Links -->
+            <div class="social-links">
+                <div class="d-flex justify-content-center mb-4">
+                    <a href="https://linkedin.com/in/alex-holme-444523153" target="_blank" class="mx-5">
+                        <img src="icons/lin_logo.png" alt="LinkedIn" class="social-icon">
+                        <div>LinkedIn</div>
+                    </a>
+                    <a href="path/to/your/resume.pdf" target="_blank" class="mx-5">
+                        <img src="icons/resume_icon.png" alt="Resume" class="social-icon">
+                        <div>Resume</div>
+                    </a>
+                    <a href="https://github.com/aholme1" target="_blank" class="mx-5">
+                        <img src="icons/GitHub_logo.png" alt="GitHub" class="social-icon">
+                        <div>GitHub</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
